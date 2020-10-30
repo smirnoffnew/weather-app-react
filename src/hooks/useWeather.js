@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_KEY } from "../constants/apiKey";
-import { BASIC_ICON_API, BASIC_WEATHER_API } from "../constants/api";
+import { BASIC_WEATHER_API } from "../constants/api";
 
 const useWeather = ({ position, geoError }) => {
   const [weatherData, setWeatherData] = useState({});
@@ -33,10 +33,7 @@ const useWeather = ({ position, geoError }) => {
           config
         );
         const iconcode = weather?.weather[0]?.icon;
-        const { data: icon } = await axios.get(
-          `${BASIC_ICON_API}/img/wn/${iconcode}@2x.png`
-        );
-        setWeatherData({ temperature: weather?.main?.temp, icon });
+        setWeatherData({ temperature: weather?.main?.temp, iconcode });
       } catch (e) {
         console.error(e);
         setWeatherError("Getting weather data failed");
