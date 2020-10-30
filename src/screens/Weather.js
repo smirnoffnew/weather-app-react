@@ -30,7 +30,7 @@ const Weather = ({
   weatherError,
   iconcode,
 }) => {
-  const [temperature, setTemperature] = useState(initialTemperature ?? 0);
+  const [temperature, setTemperature] = useState(initialTemperature || 0);
 
   return (
     <WeatherContainer {...{ temperature }}>
