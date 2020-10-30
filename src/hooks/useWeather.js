@@ -29,7 +29,7 @@ const useWeather = ({ position, geoError }) => {
         };
 
         const { data: weather } = await axios.get(
-          `${BASIC_WEATHER_API}/data/2.5/weather`,
+          `https://cors-anywhere.herokuapp.com/${BASIC_WEATHER_API}/data/2.5/weather`,
           config
         );
         const iconcode = weather?.weather[0]?.icon;
